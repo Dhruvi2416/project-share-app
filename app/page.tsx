@@ -1,15 +1,13 @@
-import { Button } from "@/components/ui/button";
+import FeaturedProducts from "@/components/products/featured-products";
+import HeroSection from "@/components/landing-page/hero-section";
+import RecentlyLaunchedProducts from "@/components/landing-page/recently-launched-products";
 
 export default function Home() {
   return (
     <div>
-      <h1>Hello Next.js!</h1>
-      {/* <Button className="border">Click Me</Button> */}
-       <Button variant="outline" size={"lg"}>Click Me</Button>
-        <Button variant="secondary">Click Me</Button>
-         <Button variant="default" className="secondary">Click Me</Button>
-          <Button variant="destructive">Click Me</Button>
-           <Button variant="link">Click Me</Button>
+      <HeroSection />
+      <FeaturedProducts />
+      <RecentlyLaunchedProducts />
     </div>
   );
 }

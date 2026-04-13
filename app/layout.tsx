@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Geist } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
+import Header from "@/components/common/header";
+import Footer from "@/components/common/footer";
+import { ClerkProvider } from "@clerk/nextjs";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
-const inter = Inter({
+const outfit = Outfit({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "iBuiltThis",
+  title: "iBuiltThis Share Your Creations, Discover New Launches",
   description: "A app to share your all projects",
 };
 
@@ -20,14 +20,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body
-        className={`${inter.className} min-h-full flex flex-col antialiased`}
-      >
-        <header>iBuiltThis</header>
-        {children}
-        <footer>iBuiltThis Inc. All Rights Reserved</footer>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${outfit.className} min-h-full flex flex-col antialiased`}
+        >
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
