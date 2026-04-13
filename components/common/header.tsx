@@ -1,6 +1,14 @@
-import { CompassIcon, HomeIcon, SparklesIcon } from "lucide-react";
+import { CompassIcon, HomeIcon, SparklesIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import {
+  Show,
+  SignIn,
+  SignInButton,
+  SignUp,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 const Logo = () => {
   return (
@@ -17,7 +25,6 @@ const Logo = () => {
 };
 
 export default function Header() {
-  const isSignedIn = true;
   return (
     <header className="sticky z-50 top-0 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="wrapper px-12">
@@ -40,24 +47,23 @@ export default function Header() {
             </Link>
           </nav>
           <div className="flex items-center gap-3">
-            {isSignedIn ? (
-              <div>
+            <Show when="signed-out">
+              <SignInButton mode="modal" />
+              <SignUpButton mode="modal">
+                <Button>Sign Up</Button>
+              </SignUpButton>
+            </Show>
+            <Show when="signed-in">
+              <div className="flex gap-4">
                 <Button asChild>
                   <Link href="/submit">
                     <SparklesIcon className="size-4" />
                     Submit Project
                   </Link>
                 </Button>
-                <Button variant={"ghost"}>User Icon</Button>
               </div>
-            ) : (
-              <div>
-                <Button variant={"ghost"} className="hover:bg-primary/10 ">
-                  Sign In
-                </Button>
-                <Button>Sign Up</Button>
-              </div>
-            )}
+              <UserButton />
+            </Show>
           </div>
         </div>
       </div>
