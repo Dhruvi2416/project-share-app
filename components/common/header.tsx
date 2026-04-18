@@ -1,14 +1,7 @@
 import { CompassIcon, HomeIcon, SparklesIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Show,
-  SignIn,
-  SignInButton,
-  SignUp,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 
 const Logo = () => {
   return (
