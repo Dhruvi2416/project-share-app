@@ -1,44 +1,13 @@
+"use cache";
 import SectionHeader from "@/components/common/section-header";
 import { ArrowUpRightIcon, StarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ProductCard from "../landing-page/product-card";
+import { getFeaturedProducts } from "@/lib/products/product-select";
 
-export default function FeaturedProducts() {
-  const featuredProducts = [
-    {
-      id: 1,
-      name: "ParityKit",
-      description: "Price parity for global SaaS products",
-      tags: ["Saas", "Pricing", "Global"],
-      votes: 615,
-      isFeatured: true,
-    },
-    {
-      id: 2,
-      name: "Developer to Leader",
-      description: "A course on Engineering Leadership",
-      tags: ["Course", "leadership"],
-      votes: 503,
-      isFeatured: true,
-    },
-    {
-      id: 3,
-      name: "ProofyBubble",
-      description: "Social proof notifications that convert visitors",
-      tags: ["Marketing", "SaaS", "Conversion"],
-      votes: 531,
-      isFeatured: true,
-    },
-    {
-      id: 4,
-      name: "Modern Full Stack Next.js course",
-      description: "Learn to build modern full stack applications with Next.js",
-      tags: ["Next.js", "Tailwind CSS", "Full Stack"],
-      votes: 124,
-      isFeatured: true,
-    },
-  ];
+export default async function FeaturedProducts() {
+  const featuredProducts = await getFeaturedProducts();
 
   return (
     <section className="bg-muted/20 py-20">
